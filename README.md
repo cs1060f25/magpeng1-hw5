@@ -21,10 +21,42 @@ Successfully implemented a SQL injection attack against the vulnerable endpoint 
 
 ## 5.3: Vulnerability Scanner
 
-Stub HTTP and SSH servers for testing the vulnerability scanner.
-Prototyped with Codeium Windsurf and the DeepSeek V3 model.
-Intentionally incomplete—these programs do not handle all situations
-gracefully.
+Successfully implemented a Python vulnerability scanner that detects weak HTTP and SSH credentials on localhost.
+
+### Files:
+- `vulnerability_scanner.py`: Main scanner program that detects weak credentials
+- `requirements.txt`: Python dependencies (requests, paramiko)
+- `http_server.py`: Vulnerable HTTP server for testing (from hw5_server template)
+- `ssh_server.py`: Vulnerable SSH server for testing (from hw5_server template)
+
+### Scanner Features:
+- **Port Scanning**: Scans localhost (127.0.0.1) for open TCP ports below 9000
+- **HTTP Basic Auth Testing**: Tests discovered HTTP services with weak credentials
+- **SSH Password Auth Testing**: Tests discovered SSH services with weak credentials
+- **Clean Output**: Prints successful connections in RFC 3986 format with server responses
+- **Error Handling**: Silently handles exceptions without printing error messages
+- **Verbose Mode**: Optional `-v` flag for debugging information
+
+### Credentials Tested:
+```python
+credentials = {
+    'admin': 'admin',
+    'root': 'abc123', 
+    'skroob': '12345'
+}
+```
+
+### Example Output:
+```
+ssh://skroob:12345@127.0.0.1:2222 success
+http://admin:admin@127.0.0.1:8080 success
+```
+
+### AI Models Used:
+- **Cascade (Windsurf)**: Used for implementing the vulnerability scanner logic, port scanning techniques, and HTTP/SSH authentication testing. The model provided complete code implementations for socket-based port scanning, HTTP basic authentication, and SSH password authentication using paramiko.
+
+### Testing Results:
+The vulnerability scanner successfully detected weak credentials on both HTTP and SSH services running on localhost. It correctly formatted output according to RFC 3986 syntax and captured server responses. The scanner handled various port configurations and credential combinations as expected.
 
 ## ssh_server.py
 Usage:
