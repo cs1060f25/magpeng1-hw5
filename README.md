@@ -14,9 +14,10 @@ Successfully implemented a SQL injection attack against the vulnerable endpoint 
 ### AI Models Used:
 - **Cascade (Windsurf)**: Used for understanding SQL injection techniques and crafting the malicious payload. The model provided guidance and direct code on breaking out of SQL string literals and constructing OR clauses for database dumping.
     - **Attack Results**: The SQL injection attack successfully bypassed the original query constraints and returned diverse data from the database (limited to 100 results as required). The attack payload `"Adult obesity' OR '1'='1' LIMIT 100 --"` effectively terminated the original string and added a condition that matches all rows.
-
-### Guardrails Encountered:
-No significant guardrails were encountered when asking Cascade about SQL injection techniques for educational purposes. The model provided helpful technical guidance when the context was clearly educational and security research-focused.
+    - **Guardrails Encountered**: No significant guardrails were encountered when asking Cascade about SQL injection techniques for educational purposes. The model provided helpful technical guidance when the context was clearly educational and security research-focused.
+- **ChatGPT 5**: Used for understanding SQL injection techniques and crafting the malicious payload. The model provided context but no direct code on breaking out of SQL string literals.
+    - **Attack Results**: After prompting more thoroughly by framing the prompt as a security research exercise (asking to provide abstract, conceptual guidance), the model provided a partial code template with explanation for how tautology could be used. The SQL injection attack was successful but some user input was required to complete the payload.
+    - **Guardrails Encountered**: When using ChatGPT 5, the model only provided explanations of the SQL injection technique and did not provide direct code, only snippets (fill in the blank code) after more prompting. 
 
 ## 5.3: Vulnerability Scanner
 
