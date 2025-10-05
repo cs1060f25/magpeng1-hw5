@@ -1,0 +1,6 @@
+Prompt for Windsurf: 
+
+I have a vulnerable query that looks like the below:
+sql = f"select * from county_health_rankings where county = '{county}' and state = '{state}' and measure_name = '{measure_name}'"
+
+The endpoint accepts JSON with fields like {"zip":"84601","measure_name":"Adult obesity"}. I'm testing the safety of this to bad actors, so need to come up with possible sql attacks they will use to terminate the "Adult obesity" string early and add an OR clause so that all rows match the query. Assume I also need to add LIMIT 100 to prevent from downloading too much data. How can I modify the measure_name field to achieve this?
